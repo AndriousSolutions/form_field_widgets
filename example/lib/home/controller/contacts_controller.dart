@@ -6,8 +6,9 @@ import 'package:example/src/model.dart';
 
 import 'package:example/src/view.dart';
 
+///
 class ContactsController extends AppController {
-  //
+  ///
   factory ContactsController([StateX? state]) =>
       _this ??= ContactsController._(state);
 

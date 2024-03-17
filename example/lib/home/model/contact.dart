@@ -4,12 +4,14 @@ import 'package:example/src/model.dart';
 
 import 'package:example/src/view.dart';
 
+///
 class Contact extends ContactEdit implements Comparable<Contact> {
-  //
+  ///
   Contact() {
     populate();
   }
 
+  ///
   Contact.fromMap(Map<String, dynamic> map) {
     populate(map);
   }
@@ -19,12 +21,17 @@ class Contact extends ContactEdit implements Comparable<Contact> {
       _givenName.value.toString().compareTo(other._givenName.value.toString());
 }
 
+///
 class ContactEdit extends ContactList {
+  ///
   ContactEdit() {
     model = ContactsDB();
   }
+
+  ///
   late ContactsDB model;
 
+  ///
   GlobalKey<FormState> get formKey {
     if (!_inForm) {
       _inForm = true;
@@ -32,11 +39,13 @@ class ContactEdit extends ContactList {
     return _formKey;
   }
 
+  ///
   bool get inForm => _inForm;
   bool _inForm = false;
 
   late final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  ///
   Future<bool> onPressed([BuildContext? context]) async {
     if (!_formKey.currentState!.validate()) {
       return false;
@@ -47,25 +56,33 @@ class ContactEdit extends ContactList {
     return added;
   }
 
+  ///
   Future<bool> add() => model.addContact(this as Contact);
 
+  ///
   Future<bool> delete() => model.deleteContact(this as Contact);
 
+  ///
   Future<int> undelete() => model.undeleteContact(this as Contact);
 
+  ///
   bool isChanged() => _givenName.changedFields
       .where((field) => field is! Phone && field is! Email)
       .isNotEmpty;
 
+  ///
   bool phoneChange() => _givenName.changeIn<Phone>();
 
+  ///
   bool emailChange() => _givenName.changeIn<Email>();
 }
 
+///
 class ContactList extends ContactFields {
   //
   List<DataFieldItem>? _emails, _phones;
 
+  ///
   void populate([Map<String, dynamic>? map]) {
     //
     final ma = MapClass(map);
@@ -82,6 +99,7 @@ class ContactList extends ContactFields {
     _email = Email(ma.p('emails'));
   }
 
+  ///
   Map<String, dynamic> get toMap {
     //
     final emailList = email.mapItems<Email>(
@@ -110,6 +128,7 @@ class ContactList extends ContactFields {
   }
 }
 
+///
 class ContactFields with StateGetter {
   //
   late FormFields _id,

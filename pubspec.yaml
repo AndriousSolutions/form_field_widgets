@@ -14,7 +14,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  fluttery_framework: ^4.2.0
+  fluttery_framework: 4.17.0
 
 dev_dependencies:
 

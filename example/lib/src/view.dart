@@ -4,7 +4,13 @@
 // found in the LICENSE file.
 //
 
-export 'view/_view_exports.dart';
+export 'package:example/app/view/contacts_app.dart';
+
+export 'package:example/home/view/add_contact.dart';
+
+export 'package:example/home/view/contact_details.dart';
+
+export 'package:example/home/view/contacts_home.dart';
 
 export 'package:form_field_widgets/form_field_widgets.dart';
 
@@ -12,14 +18,4 @@ export 'package:flutter/material.dart' hide runApp;
 
 export 'package:prefs/prefs.dart';
 
-export 'package:fluttery_framework/view.dart'
-    hide
-        OnSavedFunc,
-        FieldController,
-        MapItemFunction,
-        DataFields,
-        ListItems,
-        DataFieldItem,
-        StateGetter,
-        FieldWidgets,
-        MapClass;
+export 'package:fluttery_framework/view.dart';

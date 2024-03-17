@@ -10,6 +10,7 @@ import 'package:example/src/view.dart';
 
 /// App
 class FormFieldsExampleApp extends AppStatefulWidget {
+  ///
   FormFieldsExampleApp({super.key});
   // This is the 'App State object' of the application.
   @override

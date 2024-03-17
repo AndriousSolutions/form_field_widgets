@@ -5,7 +5,7 @@ import 'package:dbutils/sqlite_db.dart' show Database, SQLiteDB, Transaction;
 
 import 'package:example/src/view.dart';
 
-import 'contact.dart' show Contact;
+import '../../home/model/contact.dart' show Contact;
 
 class ContactsDB extends SQLiteDB {
   factory ContactsDB() => _this ??= ContactsDB._();

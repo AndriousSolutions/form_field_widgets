@@ -3,10 +3,15 @@ import 'package:example/src/model.dart';
 
 import 'package:example/src/view.dart';
 
+///
 enum AppBarBehavior { normal, pinned, floating, snapping }
 
+///
 class ContactDetails extends StatefulWidget {
+  ///
   const ContactDetails({required this.contact, Key? key}) : super(key: key);
+
+  ///
   final Contact contact;
   @override
   State createState() => _ContactDetailsState();
@@ -55,7 +60,7 @@ class _BuildAndroid extends StatelessWidget {
   Widget build(BuildContext context) {
     final contact = state.contact;
     // Dart allows for local function declarations
-    onTap() {
+    void onTap() {
       if (!contact.inForm) {
         state.editContact(contact, context);
       }
@@ -114,7 +119,7 @@ class _BuildiOS extends StatelessWidget {
   Widget build(BuildContext context) {
     final contact = state.contact;
     // Dart allows for local function declarations
-    onTap() => state.editContact(contact, context);
+    void onTap() => state.editContact(contact, context);
     return CupertinoPageScaffold(
       child: CustomScrollView(slivers: <Widget>[
         CupertinoSliverNavigationBar(

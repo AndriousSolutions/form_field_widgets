@@ -4,7 +4,7 @@ import 'package:example/src/model.dart';
 import 'package:example/src/view.dart';
 
 class AddContact extends StatefulWidget {
-  const AddContact({this.contact, this.title, Key? key}) : super(key: key);
+  const AddContact({this.contact, this.title, super.key});
   final Contact? contact;
   final String? title;
   @override
@@ -42,7 +42,7 @@ class _AddContactState extends StateX<AddContact> {
 
 /// The Android interface.
 class _BuildAndroid extends StatelessWidget {
-  const _BuildAndroid({Key? key, required this.state}) : super(key: key);
+  const _BuildAndroid({super.key, required this.state});
   final _AddContactState state;
 
   @override
@@ -62,7 +62,7 @@ class _BuildAndroid extends StatelessWidget {
                 Navigator.of(context).pop();
               }
             },
-            child: const Icon(Icons.save, color: Colors.white),
+            child: const Icon(Icons.save), //, color: Colors.white),
           )
         ],
       ),
@@ -89,7 +89,7 @@ class _BuildAndroid extends StatelessWidget {
 
 /// The iOS interface
 class _BuildiOS extends StatelessWidget {
-  const _BuildiOS({Key? key, required this.state}) : super(key: key);
+  const _BuildiOS({super.key, required this.state});
   final _AddContactState state;
 
   @override

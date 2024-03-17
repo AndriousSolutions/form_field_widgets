@@ -3,8 +3,12 @@ import 'package:example/src/controller.dart';
 
 import 'package:example/src/view.dart';
 
+///
 class ContactsList extends StatefulWidget {
-  const ContactsList({Key? key, this.title = 'Contacts App'}) : super(key: key);
+  ///
+  const ContactsList({super.key, this.title = 'Contacts App'});
+
+  ///
   final String title;
 
   @override
@@ -25,13 +29,8 @@ class _ContactListState extends StateX<ContactsList> {
 
   String? _title;
 
-  /// Depending on the platform, run an 'Android' or 'iOS' style of Widget.
   @override
-  Widget buildAndroid(BuildContext context) => _buildAndroid(this);
-
-  /// Depending on the platform, run an 'Android' or 'iOS' style of Widget.
-  @override
-  Widget buildiOS(BuildContext context) => _buildiOS(this);
+  Widget builder(BuildContext context) => _buildAndroid(this);
 
   // Merely for demonstration purposes. Erase if not using.
   /// Called when this object is reinserted into the tree after having been
@@ -188,9 +187,7 @@ Widget _buildAndroid(_ContactListState state) {
       title: Text(state._title ?? state.widget.title),
       actions: [
         TextButton(
-          onPressed: () {
-            con.sort();
-          },
+          onPressed: con.sort,
           child: Icon(con.sortedAlpha ? Icons.sort : Icons.sort_by_alpha,
               color: Colors.white),
         ),
@@ -269,114 +266,9 @@ Widget _buildAndroid(_ContactListState state) {
           ));
         }
         // Refresh to relieve any changes made.
-        con.refresh();
+        await con.refresh();
       },
       child: const Icon(Icons.add),
-    ),
-  );
-}
-
-Widget _buildiOS(_ContactListState state) {
-  //
-  final con = state.con;
-  final widget = state.widget;
-  final theme = App.themeData;
-  return CupertinoPageScaffold(
-    child: CustomScrollView(
-      semanticChildCount: 5,
-      slivers: <Widget>[
-        CupertinoSliverNavigationBar(
-          largeTitle: Text(state._title ?? widget.title),
-          leading: Material(
-            child: IconButton(
-              icon: Icon(con.sortedAlpha ? Icons.sort : Icons.sort_by_alpha),
-              onPressed: () {
-                con.sort();
-              },
-            ),
-          ),
-          middle: Material(
-            child: IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: () async {
-                await Navigator.of(con.state!.context)
-                    .push(MaterialPageRoute<void>(
-                  builder: (_) => const AddContact(),
-                ));
-                con.refresh();
-              },
-            ),
-          ),
-        ),
-        if (con.items == null)
-          const Center(
-            child: CircularProgressIndicator(),
-          )
-        else
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (_, int index) {
-                final contact = con.itemAt(index);
-                return contact?.displayName.onDismissible(
-                  background: Material(
-                    child: Container(
-                      color: Colors.red,
-                      child: const ListTile(
-                        leading:
-                            Icon(Icons.delete, color: Colors.white, size: 40),
-                        trailing:
-                            Icon(Icons.delete, color: Colors.white, size: 40),
-                      ),
-                    ),
-                  ),
-                  dismissed: (DismissDirection direction) {
-                    con.deleteItem(index);
-                    final action = (direction == DismissDirection.endToStart)
-                        ? 'deleted'
-                        : 'archived';
-                    App.snackBar(
-                      duration: const Duration(milliseconds: 8000),
-                      content: Text('You $action an item.'),
-                      action: SnackBarAction(
-                          label: 'UNDO',
-                          onPressed: () {
-                            contact.undelete();
-                            state.setState(() {});
-                          }),
-                    );
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: theme?.canvasColor,
-                      border: Border(
-                        bottom: BorderSide(color: theme!.dividerColor),
-                      ),
-                    ),
-                    child: CupertinoListTile(
-                      leading: contact.displayName.circleAvatar,
-                      title: contact.displayName.text,
-                      onTap: () async {
-                        await Navigator.of(con.state!.context)
-                            .push(MaterialPageRoute<void>(
-                          builder: (_) => ContactDetails(contact: contact),
-                        ));
-                        await con.getContacts();
-                        con.state!.setState(() {});
-                      },
-                    ),
-                  ),
-                );
-              },
-              childCount: con.items?.length,
-              semanticIndexCallback: (Widget widget, int localIndex) {
-                if (localIndex.isEven) {
-                  return localIndex ~/ 2;
-                }
-                return null;
-              },
-            ),
-          ),
-      ],
     ),
   );
 }
