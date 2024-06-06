@@ -1,10 +1,10 @@
 //
 
-import 'package:example/src/controller.dart';
+import '/src/controller.dart';
 
-import 'package:example/src/model.dart';
+import '/src/model.dart';
 
-import 'package:example/src/view.dart';
+import '/src/view.dart';
 
 ///
 class ContactsController extends AppController {
@@ -15,6 +15,8 @@ class ContactsController extends AppController {
   ContactsController._([StateX? state])
       : model = ContactsDB(),
         super(state);
+
+  ///
   final ContactsDB model;
   static ContactsController? _this;
 
@@ -36,6 +38,7 @@ class ContactsController extends AppController {
   bool get sortedAlpha => _sortedAlpha;
   late bool _sortedAlpha;
 
+  ///
   static const String sortKEY = 'sort_by_alpha';
 
   @override
@@ -76,6 +79,7 @@ class ContactsController extends AppController {
     super.dispose();
   }
 
+  ///
   Future<List<Contact>> getContacts() async {
     _contacts = await model.getContacts();
     if (_sortedAlpha) {
@@ -98,13 +102,17 @@ class ContactsController extends AppController {
     return _contacts!;
   }
 
+  ///
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
+  ///
   List<Contact>? get items => _contacts;
   List<Contact>? _contacts;
 
+  ///
   Contact? itemAt(int index) => items?.elementAt(index);
 
+  ///
   Future<bool> deleteItem(int index) async {
     final Contact? contact = items?.elementAt(index);
     var delete = contact != null;

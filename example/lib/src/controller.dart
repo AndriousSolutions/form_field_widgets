@@ -6,4 +6,4 @@
 
 export 'package:fluttery_framework/controller.dart';
 
-export 'package:example/home/controller/contacts_controller.dart';
+export '/home/controller/contacts_controller.dart';

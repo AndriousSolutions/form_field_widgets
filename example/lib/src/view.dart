@@ -4,13 +4,13 @@
 // found in the LICENSE file.
 //
 
-export 'package:example/app/view/contacts_app.dart';
+export '/app/view/contacts_app.dart';
 
-export 'package:example/home/view/add_contact.dart';
+export '/home/view/add_contact.dart';
 
-export 'package:example/home/view/contact_details.dart';
+export '/home/view/contact_details.dart';
 
-export 'package:example/home/view/contacts_home.dart';
+export '/home/view/contacts_home.dart';
 
 export 'package:form_field_widgets/form_field_widgets.dart';
 

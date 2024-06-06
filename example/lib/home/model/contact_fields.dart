@@ -1,12 +1,12 @@
 //
-import 'package:example/src/model.dart';
+import '/src/model.dart';
 
-import 'package:example/src/view.dart';
+import '/src/view.dart';
 
 /// Add to the class this:
 /// `extends FieldWidgets<T> with FieldChange`
 mixin FormFields on FieldWidgets<Contact> {
-  //
+  ///
   Set<FieldWidgets<Contact>> get changedFields => _changedFields;
   static final Set<FieldWidgets<Contact>> _changedFields = {};
 
@@ -19,16 +19,21 @@ mixin FormFields on FieldWidgets<Contact> {
     }
   }
 
+  ///
   bool changeIn<T>() => changedFields.whereType<T>().isNotEmpty;
 }
 
+///
 class Id extends FieldWidgets<Contact> with FormFields {
+  ///
   Id(dynamic value) : super(label: 'Identifier', value: value);
 }
 
+///
 String? notEmpty(String? v) =>
     v != null && v.isEmpty ? 'Cannot be empty' : null;
 
+///
 FormFields displayName(Contact contact) {
   String? display;
 
@@ -40,7 +45,9 @@ FormFields displayName(Contact contact) {
   return DisplayName(display, Text(display));
 }
 
+///
 class DisplayName extends FieldWidgets<Contact> with FormFields {
+  ///
   DisplayName(String value, Widget child)
       : super(
           label: 'Display Name'.tr,
@@ -49,7 +56,9 @@ class DisplayName extends FieldWidgets<Contact> with FormFields {
         );
 }
 
+///
 class GivenName extends FieldWidgets<Contact> with FormFields {
+  ///
   GivenName([dynamic value])
       : super(
           label: 'First Name'.tr,
@@ -60,7 +69,9 @@ class GivenName extends FieldWidgets<Contact> with FormFields {
         );
 }
 
+///
 class MiddleName extends FieldWidgets<Contact> with FormFields {
+  ///
   MiddleName([dynamic value])
       : super(
           label: 'Middle Name'.tr,
@@ -70,7 +81,9 @@ class MiddleName extends FieldWidgets<Contact> with FormFields {
         );
 }
 
+///
 class FamilyName extends FieldWidgets<Contact> with FormFields {
+  ///
   FamilyName([dynamic value])
       : super(
           label: 'Last Name'.tr,
@@ -81,7 +94,9 @@ class FamilyName extends FieldWidgets<Contact> with FormFields {
         );
 }
 
+///
 class Company extends FieldWidgets<Contact> with FormFields {
+  ///
   Company([dynamic value])
       : super(
           label: 'Company'.tr,
@@ -91,7 +106,9 @@ class Company extends FieldWidgets<Contact> with FormFields {
         );
 }
 
+///
 class JobTitle extends FieldWidgets<Contact> with FormFields {
+  ///
   JobTitle([dynamic value])
       : super(
           label: 'Job'.tr,
@@ -101,8 +118,9 @@ class JobTitle extends FieldWidgets<Contact> with FormFields {
         );
 }
 
+///
 class Phone extends FieldWidgets<Contact> with FormFields {
-  //
+  ///
   Phone([dynamic value])
       : super(
           label: 'Phone'.tr,
@@ -113,9 +131,10 @@ class Phone extends FieldWidgets<Contact> with FormFields {
     // Change the name of the map's key fields.
     keys(value: 'phone');
     // There may be more than one phone number
-    one2Many<Phone>(() => Phone());
+    one2Many<Phone>(Phone.new);
   }
 
+  ///
   Phone.init(DataFieldItem dataItem)
       : super(
           label: dataItem.label,
@@ -162,7 +181,9 @@ class Phone extends FieldWidgets<Contact> with FormFields {
   }
 }
 
+///
 class Email extends FieldWidgets<Contact> with FormFields {
+  ///
   Email([dynamic value])
       : super(
           label: 'Email'.tr,
@@ -171,9 +192,10 @@ class Email extends FieldWidgets<Contact> with FormFields {
           keyboardType: TextInputType.emailAddress,
         ) {
     // There may be more than one email address.
-    one2Many<Email>(() => Email());
+    one2Many<Email>(Email.new);
   }
 
+  ///
   Email.init(DataFieldItem dataItem)
       : super(
           label: dataItem.label,

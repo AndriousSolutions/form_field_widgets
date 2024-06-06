@@ -4,10 +4,10 @@
 // found in the LICENSE file.
 //
 
-export 'package:example/home/model/contact.dart';
+export '/home/model/contact.dart';
 
-export 'package:example/home/model/contact_fields.dart';
+export '/home/model/contact_fields.dart';
 
-export 'package:example/home/model/contacts_db.dart';
+export '/home/model/contacts_db.dart';
 
 export 'package:dbutils/sqlite_db.dart';

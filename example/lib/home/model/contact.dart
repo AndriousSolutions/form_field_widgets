@@ -1,8 +1,8 @@
 //
 
-import 'package:example/src/model.dart';
+import '/src/model.dart';
 
-import 'package:example/src/view.dart';
+import '/src/view.dart';
 
 ///
 class Contact extends ContactEdit implements Comparable<Contact> {
@@ -105,13 +105,13 @@ class ContactList extends ContactFields {
     final emailList = email.mapItems<Email>(
       'email',
       _emails,
-      (data) => Email.init(data),
+      Email.init,
     );
 
     final phoneList = phone.mapItems<Phone>(
       'phone',
       _phones,
-      (data) => Phone.init(data),
+      Phone.init,
     );
 
     return {
@@ -171,30 +171,39 @@ class ContactFields with StateGetter {
     return super.popState();
   }
 
+  ///
   Id get id => _id as Id;
   set id(Id id) => _id = id;
 
+  ///
   DisplayName get displayName => _displayName as DisplayName;
   set displayName(DisplayName name) => _displayName = name;
 
+  ///
   GivenName get givenName => _givenName as GivenName;
   set givenName(GivenName name) => _givenName = name;
 
+  ///
   MiddleName get middleName => _middleName as MiddleName;
   set middleName(MiddleName name) => _middleName = name;
 
+  ///
   FamilyName get familyName => _familyName as FamilyName;
   set familyName(FamilyName name) => _familyName = name;
 
+  ///
   Company get company => _company as Company;
   set company(Company company) => _company = company;
 
+  ///
   JobTitle get jobTitle => _jobTitle as JobTitle;
   set jobTitle(JobTitle job) => _jobTitle = job;
 
+  ///
   Phone get phone => _phone as Phone;
   set phone(Phone phone) => _phone = phone;
 
+  ///
   Email get email => _email as Email;
   set email(Email email) => _email = email;
 }

@@ -5,9 +5,11 @@ import 'package:dbutils/sqlite_db.dart' show Database, SQLiteDB, Transaction;
 
 import 'package:example/src/view.dart';
 
-import '../../home/model/contact.dart' show Contact;
+import '/home/model/contact.dart' show Contact;
 
+///
 class ContactsDB extends SQLiteDB {
+  ///
   factory ContactsDB() => _this ??= ContactsDB._();
   ContactsDB._() : super();
 
@@ -20,8 +22,10 @@ class ContactsDB extends SQLiteDB {
   @override
   int get version => 1;
 
+  ///
   Future<bool> initState() => init();
 
+  ///
   void dispose() => disposed();
 
   @override
@@ -67,11 +71,13 @@ class ContactsDB extends SQLiteDB {
     }, exclusive: true);
   }
 
+  ///
   Future<List<Contact>> getContacts() async {
     return listContacts(
         await _this!.rawQuery('SELECT * FROM Contacts WHERE deleted = 0'));
   }
 
+  ///
   Future<List<Contact>> listContacts(List<Map<String, dynamic>> query) async {
     //
     final contactList = <Contact>[];
@@ -100,6 +106,7 @@ class ContactsDB extends SQLiteDB {
     return contactList;
   }
 
+  ///
   Future<bool> addContact(Contact contact) async {
     //
     var add = true;
@@ -183,8 +190,10 @@ class ContactsDB extends SQLiteDB {
     return add;
   }
 
+  ///
   void func(key, value) {}
 
+  ///
   Future<bool> deleteContact(Contact contact) async {
     //
     final map = contact.toMap;
@@ -227,6 +236,7 @@ class ContactsDB extends SQLiteDB {
     return rec.isNotEmpty;
   }
 
+  ///
   Future<int> undeleteContact(Contact contact) async {
     //
     final map = contact.toMap;

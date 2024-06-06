@@ -1,11 +1,17 @@
 //
-import 'package:example/src/model.dart';
+import '/src/model.dart';
 
-import 'package:example/src/view.dart';
+import '/src/view.dart';
 
+///
 class AddContact extends StatefulWidget {
+  ///
   const AddContact({this.contact, this.title, super.key});
+
+  ///
   final Contact? contact;
+
+  ///
   final String? title;
   @override
   State createState() => _AddContactState();
@@ -62,7 +68,7 @@ class _BuildAndroid extends StatelessWidget {
                 Navigator.of(context).pop();
               }
             },
-            child: const Icon(Icons.save), //, color: Colors.white),
+            child: const Icon(Icons.save, color: Colors.white),
           )
         ],
       ),

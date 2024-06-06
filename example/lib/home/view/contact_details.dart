@@ -1,10 +1,22 @@
 //
-import 'package:example/src/model.dart';
+import '/src/model.dart';
 
-import 'package:example/src/view.dart';
+import '/src/view.dart';
 
 ///
-enum AppBarBehavior { normal, pinned, floating, snapping }
+enum AppBarBehavior {
+  ///
+  normal,
+
+  ///
+  pinned,
+
+  ///
+  floating,
+
+  ///
+  snapping,
+}
 
 ///
 class ContactDetails extends StatefulWidget {
