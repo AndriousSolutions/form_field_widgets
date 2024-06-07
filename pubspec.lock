@@ -177,10 +177,10 @@ packages:
     dependency: "direct main"
     description:
       name: fluttery_framework
-      sha256: afe568798ecf3f768172b496517ed4ae4c8d3bba9df08bfde72fdc2b008b8d35
+      sha256: "58ca5146f0d6ca9957bd20ffb452c9509d34bde6877ad1e8ed143ced04c698fb"
       url: "https://pub.dev"
     source: hosted
-    version: "4.21.0"
+    version: "4.22.0"
   go_router:
     dependency: transitive
     description:
@@ -502,10 +502,10 @@ packages:
     dependency: transitive
     description:
       name: state_extended
-      sha256: "6c95f09e6007eb71b79c4b85e8fcb0ea3617aad5cd29a85924f31c644d0dba08"
+      sha256: "1d11329341fd019b8a09285c1492091616fb2e5c0b22567d3bb57685b393678a"
       url: "https://pub.dev"
     source: hosted
-    version: "4.16.1"
+    version: "4.17.0"
   stream_channel:
     dependency: transitive
     description:

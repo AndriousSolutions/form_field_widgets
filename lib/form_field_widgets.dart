@@ -14,7 +14,9 @@ import 'dart:ui' as ui show TextHeightBehavior;
 
 import 'package:flutter/gestures.dart';
 
-import 'package:flutter/material.dart' as m; //show TextFormField;
+import 'package:flutter/material.dart' as m;
+
+import 'package:flutter/cupertino.dart' as c;
 
 import 'package:flutter/services.dart';
 
@@ -1271,7 +1273,7 @@ class FieldWidgets<T> extends DataFieldItem with StateGetter {
 
   ///
   Widget get listTile => App.useCupertino
-      ? CupertinoListTile(
+      ? c.CupertinoListTile(
           key: Key('ListTile$_key'),
           title: title ?? onTitle(),
           subtitle: subtitle ?? onSubtitle(),
@@ -1734,91 +1736,6 @@ class FieldWidgets<T> extends DataFieldItem with StateGetter {
   }
 }
 
-/// Cupertino needs a ListTile equivalent
-/// https://github.com/flutter/flutter/issues/50668
-// class CupertinoListTile extends StatefulWidget {
-//   ///
-//   const CupertinoListTile({
-//     Key? key,
-//     this.leading,
-//     this.title,
-//     this.subtitle,
-//     this.trailing,
-//     this.onTap,
-//   }) : super(key: key);
-//
-//   ///
-//   final Widget? leading;
-//
-//   ///
-//   final Widget? title;
-//
-//   ///
-//   final Widget? subtitle;
-//
-//   ///
-//   final Widget? trailing;
-//
-//   ///
-//   final Function? onTap;
-//   @override
-//   _StatefulStateCupertino createState() => _StatefulStateCupertino();
-// }
-//
-// class _StatefulStateCupertino extends State<CupertinoListTile> {
-//   @override
-//   Widget build(BuildContext context) {
-//     late Widget leading;
-//     if (widget.leading == null) {
-//       leading = const SizedBox();
-//     } else {
-//       leading = widget.leading!;
-//     }
-//     Widget trailing;
-//     if (widget.trailing == null) {
-//       trailing = const SizedBox();
-//     } else {
-//       trailing = widget.trailing!;
-//     }
-//     return GestureDetector(
-//       onTap: () {
-//         if (widget.onTap != null) {
-//           widget.onTap!();
-//         }
-//       },
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//         children: <Widget>[
-//           Row(
-//             children: <Widget>[
-//               Padding(
-//                   padding: const EdgeInsets.symmetric(horizontal: 10),
-//                   child: leading),
-//               const SizedBox(width: 10),
-//               Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: columnChildren(context),
-//               ),
-//             ],
-//           ),
-//           Padding(
-//               padding: const EdgeInsets.symmetric(horizontal: 30),
-//               child: trailing),
-//         ],
-//       ),
-//     );
-//   }
-//
-//   List<Widget> columnChildren(BuildContext context) {
-//     final children = <Widget>[];
-//     children.add(widget.title ?? const SizedBox());
-//     if (widget.subtitle != null) {
-//       children.add(widget.subtitle!);
-//     }
-//     return children;
-//   }
-// }
-
 /// Item class used for fields
 class DataFieldItem {
   /// Supply a identifier, a [label], a [value] and a maybe a [type] of value.
@@ -2022,7 +1939,7 @@ class _LIstItemsState<T> extends State<ListItems<T>> {
           onTap: widget.onTap,
         );
       } else {
-        tile = CupertinoListTile(
+        tile = c.CupertinoListTile(
           title: Text(widget.title!),
           onTap: widget.onTap,
         );
@@ -2049,7 +1966,7 @@ class _LIstItemsState<T> extends State<ListItems<T>> {
           subtitle: Text(i.type ?? ''),
           onTap: widget.onTap,
         )
-      : CupertinoListTile(
+      : c.CupertinoListTile(
           title: Text(i.value ?? ''),
           subtitle: Text(i.type ?? ''),
           onTap: widget.onTap,
@@ -2071,7 +1988,7 @@ class _LIstItemsState<T> extends State<ListItems<T>> {
           ]),
           onTap: widget.onTap,
         )
-      : CupertinoListTile(
+      : c.CupertinoListTile(
           title: Row(children: [
             dropDown(
               field: i,
