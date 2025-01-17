@@ -19,3 +19,6 @@ export 'package:flutter/material.dart' hide runApp;
 export 'package:prefs/prefs.dart';
 
 export 'package:fluttery_framework/view.dart';
+
+/// UI Utils
+export 'package:ui_widgets_utils/ui_widgets_utils.dart';

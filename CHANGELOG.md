@@ -1,4 +1,10 @@
 
+## 1.3.0
+January 16, 2024
+- Updated dependencies 
+- Updated example app
+- README.md file updated 
+
 ## 1.2.0
 June 07, 2024
 - import 'package:flutter/cupertino.dart' to take in CupertinoListTile

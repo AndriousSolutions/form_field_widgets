@@ -14,17 +14,20 @@ class FormFieldsExampleApp extends AppStatefulWidget {
   FormFieldsExampleApp({super.key});
   // This is the 'App State object' of the application.
   @override
-  AppState createAppState() => _ExampleAppState();
+  AppStateX createAppState() => _ExampleAppState();
 }
 
 /// This is the 'View' of the application.
 /// The 'look and behavior' of the app.
 ///
-class _ExampleAppState extends AppState {
+class _ExampleAppState extends AppStateX {
   _ExampleAppState()
       : super(
           controller: ContactsController(),
           inTitle: () => 'Demo App',
+          errorScreen: AppErrorHandler.displayErrorWidget,
+          onUnknownRoute: AppErrorHandler.onUnknownRoute,
+          routes: {'/add': (_) => const AddContact()},
           inDebugShowCheckedModeBanner: () => false,
           switchUI: Prefs.getBool('switchUI'),
           useRouterConfig: false,

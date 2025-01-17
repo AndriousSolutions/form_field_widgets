@@ -147,7 +147,9 @@ class ContactsDB extends SQLiteDB {
           if (context.mounted) {
             //
             final delete = await showBox(
-                text: 'Deleting this Phone number?', context: context);
+                text: 'Deleting this Phone number?',
+                context: context,
+                useMaterial: App.useMaterial);
 
             if (delete) {
               phone.addAll({'deleted': 1});
@@ -177,7 +179,9 @@ class ContactsDB extends SQLiteDB {
 
           // ignore: use_build_context_synchronously
           final delete = await showBox(
-              text: 'Deleting this email?', context: contact.state!.context);
+              text: 'Deleting this email?',
+              context: contact.state!.context,
+              useMaterial: App.useMaterial);
 
           if (delete) {
             email.addAll({'deleted': 1});

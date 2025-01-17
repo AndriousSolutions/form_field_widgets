@@ -24,7 +24,7 @@ class _ContactListState extends StateX<ContactsList> {
   @override
   void initState() {
     super.initState();
-    _title = App.title;
+    _title = App.appState?.title ?? '';
   }
 
   String? _title;
@@ -77,7 +77,7 @@ class _ContactListState extends StateX<ContactsList> {
   /// Override this method to respond when the [widget] changes (e.g., to start
   /// implicit animations).
   @override
-  void didUpdateWidget(StatefulWidget oldWidget) {
+  void didUpdateWidget(oldWidget) {
     super.didUpdateWidget(oldWidget);
   }
 
@@ -256,15 +256,15 @@ Widget _buildAndroid(_ContactListState state) {
     floatingActionButton: FloatingActionButton(
       onPressed: () async {
         final context = con.state!.context;
-        final useRouter = App.appState!.useRouterConfig!;
-        if (useRouter) {
-          await context.push<void>('/add');
-        } else {
-          // Of course, this is for demo purposes. This is what's done without the Router Configuration.
-          await Navigator.of(context).push(MaterialPageRoute<void>(
-            builder: (_) => const AddContact(),
-          ));
-        }
+        // final useRouter = App.appState!.useRouterConfig!;
+        // if (useRouter) {
+        await context.push<void>('/add');
+        // } else {
+        //   // Of course, this is for demo purposes. This is what's done without the Router Configuration.
+        //   await Navigator.of(context).push(MaterialPageRoute<void>(
+        //     builder: (_) => const AddContact(),
+        //   ));
+        // }
         // Refresh to relieve any changes made.
         await con.refresh();
       },

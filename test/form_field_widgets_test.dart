@@ -1,5 +1,3 @@
-import 'package:flutter_test/flutter_test.dart';
-
 /// Calls the example app's very own test
 import '../example/test/widget_test.dart';
 

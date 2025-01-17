@@ -87,7 +87,8 @@ class _BuildAndroid extends StatelessWidget {
                 button01: OKOption(),
                 button02: CancelOption(),
                 text: 'Delete this contact?'.tr,
-                context: context);
+                context: context,
+                useMaterial: App.useMaterial);
 
             if (delete) {
               //
@@ -147,8 +148,11 @@ class _BuildiOS extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.delete),
               onPressed: () {
-                showBox(text: 'Delete this contact?'.tr, context: context)
-                    .then((bool delete) {
+                showBox(
+                  text: 'Delete this contact?'.tr,
+                  context: context,
+                  useMaterial: App.useMaterial,
+                ).then((bool delete) {
                   if (delete) {
                     contact.delete().then((_) {
                       Navigator.of(context).maybePop();
